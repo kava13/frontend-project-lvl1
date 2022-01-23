@@ -11,8 +11,7 @@ jobs:
   check-lint:
     runs-on: ubuntu-latest
     steps:
-    - name:  Install dependencies
-        run: make install
+      - uses: actions/checkout@v2
 
       - name: Linter check
         run: make lint
