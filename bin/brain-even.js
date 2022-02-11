@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import readlineSync from "readline-sync";
+import { sayWelcome } from "../src/index.js";
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 30;
-export const runGame = () => {
+
+export const runGame = (name) => {
   console.log("Answer \"yes\" if the number is even, otherwise answer \"no\"");
 
   for (let i = 0; i < 3; i++) {
@@ -17,10 +19,11 @@ export const runGame = () => {
       if (i === 2) console.log("Congratulations!");
     } else {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}".`);
-      console.log("Let's try again, Bill!");
+      console.log(`Let's try again, ${name}`);
       break;
     }
   }
 };
 
-runGame();
+const name = sayWelcome();
+runGame(name);
