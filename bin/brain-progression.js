@@ -2,9 +2,6 @@
 import readlineSync from "readline-sync";
 import { sayWelcome, getRandomInt } from "../src/index.js";
 
-const MIN_NUMBER = 1;
-const MAX_NUMBER = 100;
-
 const createProgression = (firstElem, delta, elementsAmount) => {
   const progressionArr = [];
 
