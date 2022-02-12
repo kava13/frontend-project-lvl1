@@ -5,27 +5,26 @@ import { sayWelcome } from "../src/index.js";
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 30;
 
-const randomNumToMathOperation = {
-  1: "+",
-  2: "-",
-  3: "*",
-};
+const calcGcd = (x, y) => {
+  let firstNum = Math.abs(x);
+  let secondNum = Math.abs(y);
 
-const calc = (firstNum, secondNum, oper) => {
-  let result = null;
-
-  if (oper === "-") {
-    result = firstNum - secondNum;
-  }
-  if (oper === "+") {
-    result = firstNum + secondNum;
+  if (secondNum > firstNum) {
+    const temp = firstNum;
+    firstNum = secondNum;
+    secondNum = temp;
   }
 
-  if (oper === "*") {
-    result = firstNum * secondNum;
+  while (true) {
+    if (secondNum === 0) {
+      return String(firstNum);
+    }
+    firstNum = firstNum % secondNum;
+    if (firstNum === 0) {
+      return String(secondNum);
+    }
+    secondNum = secondNum % firstNum;
   }
-
-  return String(result);
 };
 
 const runGame = (name) => {
@@ -33,13 +32,9 @@ const runGame = (name) => {
     const firstNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER);
     const secondNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER);
 
-    const numForOperation = Math.floor(Math.random() * (3 - 1 + 1) + MIN_NUMBER);
-    const operation = randomNumToMathOperation[numForOperation];
-
-    const rightAnswer = calc(firstNumber, secondNumber, operation);
-
-    console.log(`Question: ${firstNumber} ${operation} ${secondNumber}`);
+    console.log(`Question: ${firstNumber} ${secondNumber}`);
     const answer = readlineSync.question("Your answer: ");
+    const rightAnswer = calcGcd(firstNumber, secondNumber);
 
     if (answer === rightAnswer) {
       console.log("Correct!");

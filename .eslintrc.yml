@@ -15,6 +15,9 @@ rules:
   no-plusplus:
     - error
     - allowForLoopAfterthoughts: true
+  operator-assignment:
+    - error
+    - never
   import/extensions:
     - error
     - ignorePackages
