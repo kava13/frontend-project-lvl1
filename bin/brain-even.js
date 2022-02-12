@@ -5,7 +5,7 @@ import { sayWelcome } from '../src/index.js';
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 30;
 
-export const runGame = (name) => {
+const runGame = (name) => {
   console.log('Answer \'yes\' if the number is even, otherwise answer \'no\'');
 
   for (let i = 0; i < 3; i += 1) {
