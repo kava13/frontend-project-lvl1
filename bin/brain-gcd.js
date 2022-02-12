@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
-import { sayWelcome } from "../src/index.js";
+import readlineSync from 'readline-sync';
+import { sayWelcome } from '../src/index.js';
 
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 30;
@@ -19,25 +19,25 @@ const calcGcd = (x, y) => {
     if (secondNum === 0) {
       return String(firstNum);
     }
-    firstNum = firstNum % secondNum;
+    firstNum %= secondNum;
     if (firstNum === 0) {
       return String(secondNum);
     }
-    secondNum = secondNum % firstNum;
+    secondNum %= firstNum;
   }
 };
 
 const runGame = (name) => {
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i += 1) {
     const firstNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER);
     const secondNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1) + MIN_NUMBER);
 
     console.log(`Question: ${firstNumber} ${secondNumber}`);
-    const answer = readlineSync.question("Your answer: ");
+    const answer = readlineSync.question('Your answer: ');
     const rightAnswer = calcGcd(firstNumber, secondNumber);
 
     if (answer === rightAnswer) {
-      console.log("Correct!");
+      console.log('Correct!');
       if (i === 2) console.log(`Congratulations, ${name}!`);
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);

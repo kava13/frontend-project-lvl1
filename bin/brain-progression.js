@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import readlineSync from "readline-sync";
-import { sayWelcome, getRandomInt } from "../src/index.js";
+import readlineSync from 'readline-sync';
+import { sayWelcome, getRandomInt } from '../src/index.js';
 
 const createProgression = (firstElem, delta, elementsAmount) => {
   const progressionArr = [];
 
-  for (let i = 0; i < elementsAmount; i++) {
+  for (let i = 0; i < elementsAmount; i += 1) {
     progressionArr.push(firstElem + i * delta);
   }
 
@@ -13,9 +13,9 @@ const createProgression = (firstElem, delta, elementsAmount) => {
 };
 
 const runGame = (name) => {
-  console.log("What number is missing in the progression?");
+  console.log('What number is missing in the progression?');
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i += 1) {
     const firstElem = getRandomInt(50);
     const delta = getRandomInt(7);
     const ELEMENTS_AMOUNT = 10;
@@ -25,13 +25,13 @@ const runGame = (name) => {
 
     const hiddenElemIndex = getRandomInt(ELEMENTS_AMOUNT - 1);
     const rightAnswer = String(progression[hiddenElemIndex]);
-    progression[hiddenElemIndex] = "..";
+    progression[hiddenElemIndex] = '..';
 
-    console.log(`Question: ${progression.join(" ")}`);
-    const answer = readlineSync.question("Your answer: ");
+    console.log(`Question: ${progression.join(' ')}`);
+    const answer = readlineSync.question('Your answer: ');
 
     if (answer === rightAnswer) {
-      console.log("Correct!");
+      console.log('Correct!');
       if (i === 2) console.log(`Congratulations, ${name}!`);
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
