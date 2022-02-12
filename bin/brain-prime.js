@@ -32,7 +32,7 @@ export const runGame = (name) => {
       if (i === 2) console.log(`Congratulations, ${name}!`);
     } else {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}".`);
-      console.log(`Let's try again, ${name}`);
+      console.log(`Let's try again, ${name}!`);
       break;
     }
   }
